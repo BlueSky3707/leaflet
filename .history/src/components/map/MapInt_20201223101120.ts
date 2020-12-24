@@ -5,18 +5,13 @@ import "proj4";
 export default class MapInt {
   static maps: L.Map;
   static domid: string;
-  static layersArr: any[] = [];
-  static getInstance = (): L.Map => {
+  static getInstance = (): void => {
     if (!MapInt.maps) {
       MapInt.maps = MapInt.IntMap(MapInt.domid);
     }
-    return MapInt.maps;
+    MapInt.maps;
   };
-  static getLayerById = (id: string): any => {
-    return MapInt.layersArr.filter((x) => {
-      return x.id === id;
-    });
-  };
+
   static IntMap = (divId: string): L.Map => {
     return L.map(divId, {
       minZoom: 3,

@@ -103,14 +103,6 @@ export default {
         },
         yAxis: {
           type: "value",
-          axisTick: {
-            //y轴刻度线
-            show: false,
-          },
-          axisLine: {
-            //y轴
-            show: false,
-          },
         },
         series: [
           {
@@ -133,14 +125,6 @@ export default {
         },
         yAxis: {
           type: "value",
-          axisTick: {
-            //y轴刻度线
-            show: false,
-          },
-          axisLine: {
-            //y轴
-            show: false,
-          },
         },
         series: [
           {

@@ -23,7 +23,6 @@ export default {
   data() {
     return {
       maps: "",
-      echartLayer: "",
     };
   },
   created() {},
@@ -58,15 +57,16 @@ export default {
         id: "geoid",
         player: geoLayer,
       };
-      let filters = MapInt.getLayerById("geoid");
+      let filters = MapInt.layersArr.filter((x) => {
+        return x.id === "geoid";
+      });
       if (filters.length == 0) {
         MapInt.layersArr.push(newlayer);
       }
       fLayer.bindPopup("<div>弹出框</div>");
       fLayer.openPopup(evt.latlng);
-      console.log(MapInt.layersArr);
     });
-    this.loadEchartLayer();
+    that.loadEchartLayer();
   },
   methods: {
     loadEchartLayer() {
@@ -75,42 +75,17 @@ export default {
           className: "leaflet-echart-icon",
           iconSize: [160, 160],
           html:
-            '<div id="echart1" style="width:90px;height:90px;position:relative;background-color:transparent;"></div>',
+            '<div id="echart1" style="width:900px;height:900px;position:relative;background-color:red;"></div>',
         }),
-      });
-      let pMark2 = L.marker([36.919542, 109.159537], {
-        icon: L.divIcon({
-          className: "leaflet-echart-icon",
-          iconSize: [160, 160],
-          html:
-            '<div id="echart2" style="width:90px;height:90px;position:relative;background-color:transparent;"></div>',
-        }),
-      });
-      if (this.maps.hasLayer(this.echartLayer)) {
-        this.echartLayer.remove();
-      }
-      this.echartLayer = L.layerGroup([pMark1, pMark2]).addTo(this.maps);
-      let newlayer = {
-        id: "echartis",
-        player: this.echartLayer,
-      };
-      MapInt.layersArr.push(newlayer);
+      }).addTo(this.maps);
       let myChart = echarts.init(document.getElementById("echart1"));
-      let option = {
+      option = {
         xAxis: {
           type: "category",
           data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
         },
         yAxis: {
           type: "value",
-          axisTick: {
-            //y轴刻度线
-            show: false,
-          },
-          axisLine: {
-            //y轴
-            show: false,
-          },
         },
         series: [
           {
@@ -123,37 +98,6 @@ export default {
           },
         ],
       };
-      myChart.setOption(option);
-      //第二个
-      let myChart2 = echarts.init(document.getElementById("echart2"));
-      let option2 = {
-        xAxis: {
-          type: "category",
-          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-        },
-        yAxis: {
-          type: "value",
-          axisTick: {
-            //y轴刻度线
-            show: false,
-          },
-          axisLine: {
-            //y轴
-            show: false,
-          },
-        },
-        series: [
-          {
-            data: [120, 200, 150, 80, 70, 110, 130],
-            type: "bar",
-            showBackground: true,
-            backgroundStyle: {
-              color: "rgba(220, 220, 220, 0.8)",
-            },
-          },
-        ],
-      };
-      myChart2.setOption(option2);
     },
   },
 };

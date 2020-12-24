@@ -58,13 +58,14 @@ export default {
         id: "geoid",
         player: geoLayer,
       };
-      let filters = MapInt.getLayerById("geoid");
+      let filters = MapInt.layersArr.filter((x) => {
+        return x.id === "geoid";
+      });
       if (filters.length == 0) {
         MapInt.layersArr.push(newlayer);
       }
       fLayer.bindPopup("<div>弹出框</div>");
       fLayer.openPopup(evt.latlng);
-      console.log(MapInt.layersArr);
     });
     this.loadEchartLayer();
   },
@@ -103,14 +104,6 @@ export default {
         },
         yAxis: {
           type: "value",
-          axisTick: {
-            //y轴刻度线
-            show: false,
-          },
-          axisLine: {
-            //y轴
-            show: false,
-          },
         },
         series: [
           {
@@ -133,14 +126,6 @@ export default {
         },
         yAxis: {
           type: "value",
-          axisTick: {
-            //y轴刻度线
-            show: false,
-          },
-          axisLine: {
-            //y轴
-            show: false,
-          },
         },
         series: [
           {
@@ -154,6 +139,7 @@ export default {
         ],
       };
       myChart2.setOption(option2);
+      console.log(MapInt.layersArr);
     },
   },
 };

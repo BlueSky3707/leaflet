@@ -12,11 +12,7 @@ export default class MapInt {
     }
     return MapInt.maps;
   };
-  static getLayerById = (id: string): any => {
-    return MapInt.layersArr.filter((x) => {
-      return x.id === id;
-    });
-  };
+
   static IntMap = (divId: string): L.Map => {
     return L.map(divId, {
       minZoom: 3,

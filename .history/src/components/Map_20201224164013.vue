@@ -103,14 +103,6 @@ export default {
         },
         yAxis: {
           type: "value",
-          axisTick: {
-            //y轴刻度线
-            show: false,
-          },
-          axisLine: {
-            //y轴
-            show: false,
-          },
         },
         series: [
           {
@@ -122,6 +114,14 @@ export default {
             },
           },
         ],
+        axisTick: {
+          //y轴刻度线
+          show: false,
+        },
+        axisLine: {
+          //y轴
+          show: false,
+        },
       };
       myChart.setOption(option);
       //第二个
@@ -133,14 +133,6 @@ export default {
         },
         yAxis: {
           type: "value",
-          axisTick: {
-            //y轴刻度线
-            show: false,
-          },
-          axisLine: {
-            //y轴
-            show: false,
-          },
         },
         series: [
           {
@@ -152,6 +144,14 @@ export default {
             },
           },
         ],
+        axisTick: {
+          //y轴刻度线
+          show: false,
+        },
+        axisLine: {
+          //y轴
+          show: false,
+        },
       };
       myChart2.setOption(option2);
     },
